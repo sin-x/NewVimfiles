@@ -32,6 +32,7 @@ if index(g:bundle_group, 'basic') >= 0
     Plug 'Yggdroot/indentLine'
     Plug 'andymass/vim-matchup'
     Plug 'ervandew/supertab'
+    let g:SuperTabDefaultCompletionType = "<c-n>"
     " 展示开始画面，显示最近编辑过的文件
 	" Plug 'mhinz/vim-startify'
 endif
@@ -96,6 +97,14 @@ if index(g:bundle_group, 'nerdtree') >= 0
     " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
     autocmd BufEnter * if winnr() == winnr('h') && bufname('#') =~ 'NERD_tree_tab_\d\+\|NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_tab_\d\+\|NERD_tree_\d\+' && winnr('$') > 1 |
                 \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+endif
+
+"-------------------------------------------------
+" FZF   
+"-------------------------------------------------
+if index(g:bundle_group, 'fzf') >= 0
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
 endif
 
 call plug#end()
