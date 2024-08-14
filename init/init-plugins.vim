@@ -1,6 +1,29 @@
 "=================================================
 "
 " init-plugin.vim - 插件管理(使用 Plug 管理)
+"       
+"       - default
+"           - lightline
+"           - vim-cursorword
+"           - auto-pairs
+"           - vim-easymotion
+"       - basic
+"           - indentLine
+"           - vim-matchup
+"           - supertab
+"           - vim-surround
+"           - vim-easy-align
+"       - nerdtree
+"           - nerdtree
+"           - vim-nerdtree-syntax-highlight
+"       - fzf
+"           - fzf
+"           - fzf.vim
+"       - systemverilog
+"           - verilog_systemverilog
+"           - FastFold
+"       - colors
+"           - vim-colors-solarized
 "
 "=================================================
 
@@ -8,7 +31,8 @@
 " 默认情况下的分组，可以在前面覆盖掉
 "-------------------------------------------------
 if !exists('g:bundle_group')
-	let g:bundle_group = ['basic', 'nerdtree']
+	let g:bundle_group  = ['basic', 'nerdtree']
+    let g:bundle_group += ['colors']
     let g:bundle_group += ['fzf']
     let g:bundle_group += ['systemverilog']
 endif
@@ -27,24 +51,33 @@ call plug#begin(s:bundle_home)
 "-------------------------------------------------
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-cursorword'
-
-if index(g:bundle_group, 'basic') >= 0
-    Plug 'Yggdroot/indentLine'
-    Plug 'andymass/vim-matchup'
-    Plug 'ervandew/supertab'
-    let g:SuperTabDefaultCompletionType = "<c-n>"
-    " 展示开始画面，显示最近编辑过的文件
-	" Plug 'mhinz/vim-startify'
-endif
-
-"-------------------------------------------------
-" AutoPairs
-"-------------------------------------------------
 Plug 'jiangmiao/auto-pairs'
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '```':'```', '"""':'"""', "'''":"'''"}
 
 " 全文快速移动，<leader><leader>f{char} 即可触发
 Plug 'easymotion/vim-easymotion'
+
+"-------------------------------------------------
+" Basic
+"-------------------------------------------------
+if index(g:bundle_group, 'basic') >= 0
+    Plug 'Yggdroot/indentLine'
+    Plug 'andymass/vim-matchup'
+    Plug 'ervandew/supertab'
+    let g:SuperTabDefaultCompletionType = "<c-p>"
+    " 展示开始画面，显示最近编辑过的文件
+	" Plug 'mhinz/vim-startify'
+    Plug 'tpope/vim-surround'
+    Plug 'junegunn/vim-easy-align'
+    " Start interactive EasyAlign in visual mode (e.g. vipga)
+    xmap ga <Plug>(EasyAlign)
+
+    " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+    nmap ga <Plug>(EasyAlign)
+
+    " 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
+	Plug 'kshenoy/vim-signature'
+endif
 
 "-------------------------------------------------
 " systemverilog
@@ -107,6 +140,18 @@ if index(g:bundle_group, 'fzf') >= 0
     Plug 'junegunn/fzf.vim'
 endif
 
+"-------------------------------------------------
+" colors   
+"-------------------------------------------------
+if index(g:bundle_group, 'colors') >= 0
+    Plug 'altercation/vim-colors-solarized'
+    " set background=dark
+    " colorscheme solarized
+    " let g:solarized_termcolors=256
+
+    Plug 'sonph/onehalf', { 'rtp': 'vim' }
+endif
+
 call plug#end()
 
 "-------------------------------------------------
@@ -131,3 +176,4 @@ function! OwnGfExpression(fname)
 endfunction
 
 set includeexpr=OwnGfExpression(v:fname)
+

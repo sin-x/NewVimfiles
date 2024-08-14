@@ -31,7 +31,15 @@ elseif has("unix")
 endif
 
 try
-	colorscheme solarized
+    syntax on
+    set t_Co=256
+    set cursorline
+    colorscheme onehalfdark
+    " let g:airline_theme='onehalfdark'
+    " lightline
+    let g:lightline = { 'colorscheme': 'onehalflight' }
+
+	" colorscheme solarized
 catch /^Vim\%((\a\+)\)\=:E185/
 	colorscheme desert
 endtry
