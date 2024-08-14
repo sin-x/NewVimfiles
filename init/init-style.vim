@@ -39,7 +39,7 @@ try
     " lightline
     let g:lightline = { 'colorscheme': 'onehalflight' }
 
-	" colorscheme solarized
+    " colorscheme solarized
 catch /^Vim\%((\a\+)\)\=:E185/
-	colorscheme desert
+    colorscheme desert
 endtry

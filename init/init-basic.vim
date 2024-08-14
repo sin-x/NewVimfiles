@@ -59,14 +59,14 @@ set incsearch
 " 编码设置
 "-------------------------------------------------
 if has('multi_byte')
-	" 内部工作编码
-	set encoding=utf-8
+    " 内部工作编码
+    set encoding=utf-8
 
-	" 文件默认编码
-	set fileencoding=utf-8
+    " 文件默认编码
+    set fileencoding=utf-8
 
-	" 打开文件时自动尝试下面顺序的编码
-	set fileencodings=utf-8,ucs-bom,gbk,gb18030,big5,euc-jp,latin1
+    " 打开文件时自动尝试下面顺序的编码
+    set fileencodings=utf-8,ucs-bom,gbk,gb18030,big5,euc-jp,latin1
 endif
 
 
@@ -74,7 +74,7 @@ endif
 " 允许 Vim 自带脚本根据文件类型自动设置缩进等
 "-------------------------------------------------
 if has('autocmd')
-	filetype plugin indent on
+    filetype plugin indent on
 endif
 
 
@@ -82,8 +82,8 @@ endif
 " 语法高亮设置
 "-------------------------------------------------
 if has('syntax')
-	syntax enable
-	syntax on
+    syntax enable
+    syntax on
 endif
 
 
@@ -156,15 +156,15 @@ au GuiEnter * set t_vb=
 " 设置代码折叠
 "-------------------------------------------------
 if has('folding')
-	" 允许代码折叠
-	set foldenable
+    " 允许代码折叠
+    set foldenable
 
-	" 代码折叠默认使用syntax
-	set foldmethod=syntax
+    " 代码折叠默认使用syntax
+    set foldmethod=syntax
 
-	if has('autocmd')
-		autocmd FileType python setlocal foldmethod=indent
-	endif
+    if has('autocmd')
+        autocmd FileType python setlocal foldmethod=indent
+    endif
 endif
 
 "----------------------------------------------------------------------

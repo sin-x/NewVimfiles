@@ -31,7 +31,7 @@
 " 默认情况下的分组，可以在前面覆盖掉
 "-------------------------------------------------
 if !exists('g:bundle_group')
-	let g:bundle_group  = ['basic', 'nerdtree']
+    let g:bundle_group  = ['basic', 'nerdtree']
     let g:bundle_group += ['colors']
     let g:bundle_group += ['fzf']
     let g:bundle_group += ['systemverilog']
@@ -66,7 +66,7 @@ if index(g:bundle_group, 'basic') >= 0
     Plug 'ervandew/supertab'
     let g:SuperTabDefaultCompletionType = "<c-p>"
     " 展示开始画面，显示最近编辑过的文件
-	" Plug 'mhinz/vim-startify'
+    " Plug 'mhinz/vim-startify'
     Plug 'tpope/vim-surround'
     Plug 'junegunn/vim-easy-align'
     " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -76,7 +76,7 @@ if index(g:bundle_group, 'basic') >= 0
     nmap ga <Plug>(EasyAlign)
 
     " 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
-	Plug 'kshenoy/vim-signature'
+    Plug 'kshenoy/vim-signature'
 endif
 
 "-------------------------------------------------
