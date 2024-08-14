@@ -35,9 +35,10 @@ try
     set t_Co=256
     set cursorline
     colorscheme onehalfdark
+    set background=dark
     " let g:airline_theme='onehalfdark'
     " lightline
-    let g:lightline = { 'colorscheme': 'onehalflight' }
+    let g:lightline = { 'colorscheme': 'one' }
 
     " colorscheme solarized
 catch /^Vim\%((\a\+)\)\=:E185/
