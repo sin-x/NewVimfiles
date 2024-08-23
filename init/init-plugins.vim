@@ -102,10 +102,12 @@ if index(g:bundle_group, 'systemverilog') >= 0
     syntax enable
     
     function! SystemVerilogFoldSettings()
-        if line('$') < 8000
+        if line('$') < 2000
             let g:verilog_syntax_fold_lst = "function,task"
+            let g:verilog_disable_indent_lst = ""
         else
             let g:verilog_syntax_fold_lst = ""
+            let g:verilog_disable_indent_lst = "module,class,preproc,eos,standalone"
         endif
     endfunction
 endif
