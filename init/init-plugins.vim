@@ -105,7 +105,7 @@ if index(g:bundle_group, 'systemverilog') >= 0
     syntax enable
     
     function! SystemVerilogFoldSettings()
-        if line('$') < 8000
+        if line('$') < 2000
             let g:verilog_syntax_fold_lst = "function,task"
         else
             let g:verilog_syntax_fold_lst = ""
