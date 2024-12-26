@@ -24,6 +24,7 @@
 "           - FastFold
 "       - colors
 "           - vim-colors-solarized
+"           - onehalf
 "
 "=================================================
 
@@ -34,13 +35,16 @@ if !exists('g:bundle_group')
     let g:bundle_group  = ['basic', 'nerdtree']
     let g:bundle_group += ['colors']
     let g:bundle_group += ['fzf']
-    let g:bundle_group += ['systemverilog']
+    " let g:bundle_group += ['systemverilog']
+    let g:bundle_group += ['snippets']
+    let g:bundle_group += ['lsp']
 endif
 
 " 取得本文件所在的目录
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
 let s:bundle_home = s:home."/../plugged"
+let s:lsp_servers = s:home."/../vim-lsp/servers"
 
 packadd! matchit
 
@@ -77,6 +81,7 @@ if index(g:bundle_group, 'basic') >= 0
 
     " 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
     Plug 'kshenoy/vim-signature'
+    Plug 'vim-scripts/AutoComplPop'
 endif
 
 "-------------------------------------------------
@@ -150,6 +155,47 @@ if index(g:bundle_group, 'colors') >= 0
     " let g:solarized_termcolors=256
 
     Plug 'sonph/onehalf', { 'rtp': 'vim' }
+endif
+
+if index(g:bundle_group, 'snippets') >= 0
+    " Plug 'jayli/vim-easycomplete'
+
+    " Track the engine.
+    Plug 'SirVer/ultisnips'
+
+    " Snippets are separated from the engine. Add this if you want them:
+    Plug 'honza/vim-snippets'
+
+    " Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+    " - https://github.com/Valloric/YouCompleteMe
+    " - https://github.com/nvim-lua/completion-nvim
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<c-b>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+    " If you want :UltiSnipsEdit to split your window.
+    let g:UltiSnipsEditSplit="vertical"
+endif
+
+if index(g:bundle_group, 'lsp') >= 0
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings'
+    Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+    let g:lsp_settings_servers_dir = s:lsp_servers
+    " let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
+    let g:lsp_diagnostics_float_cursor = 1
+    let g:lsp_diagnostics_virtual_text_enabled = 0
+    " set foldmethod=expr
+    "   \ foldexpr=lsp#ui#vim#folding#foldexpr()
+    "   \ foldtext=lsp#ui#vim#folding#foldtext()
+
+    let g:lsp_settings = {
+            \     'verible-verilog-ls' : {
+            \       'allowlist': ['verilog_systemverilog', 'verilog', 'systemverilog']
+            \     }
+            \ }
 endif
 
 call plug#end()
