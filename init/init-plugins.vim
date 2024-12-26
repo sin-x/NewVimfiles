@@ -82,6 +82,9 @@ if index(g:bundle_group, 'basic') >= 0
     " 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
     Plug 'kshenoy/vim-signature'
     Plug 'vim-scripts/AutoComplPop'
+
+    Plug 'luochen1990/rainbow'
+    let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 endif
 
 "-------------------------------------------------
